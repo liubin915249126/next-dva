@@ -3,6 +3,8 @@ import Link from 'next/link';
 import React from 'react';
 import WithDva from '../utils/store';
 
+import styles from '~/less/index.less'
+
 class Page extends React.Component {
   static async getInitialProps(props) {
     // first time run in server side
@@ -37,6 +39,7 @@ class Page extends React.Component {
           minus
           </button>
         </p>
+        <div className={styles.large}>30</div>
         <p>
           <Link href="/users">
             <a>Go to /users</a>

@@ -1,5 +1,6 @@
 
 import Link from 'next/link';
+import styles from '~/less/user.less'
 
 export default function () {
   return (
@@ -11,6 +12,12 @@ export default function () {
           Back
         </a>
       </Link>
+      <Link href="/404">
+        <a>
+          404
+        </a>
+      </Link>
+      <style jsx global>{styles}</style>
     </div>
   );
 }
