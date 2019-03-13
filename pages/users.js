@@ -1,6 +1,6 @@
 
 import Link from 'next/link';
-import styles from '~/less/user.less'
+import styles from '~/style/user.less'
 
 export default function () {
   return (

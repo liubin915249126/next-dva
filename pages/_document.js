@@ -61,7 +61,7 @@ export default class extends Document {
 // import Document, { Head, Main, NextScript } from "next/document";
 // import Helmet from "react-helmet";
 // // import "antd/dist/antd.min.css";
-// import stylesheet from "~/less/index.less";
+// import stylesheet from "~/style/index.less";
 
 // export default class extends Document {
 //   static async getInitialProps(...args) {

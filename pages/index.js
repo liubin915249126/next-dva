@@ -4,7 +4,7 @@ import React from 'react';
 import WithDva from '../utils/store';
 
 import {Button} from 'antd'
-import styles from '~/less/index.less'
+import styles from '~/style/index.less'
 // import '~/common/common.less'
 
 class Page extends React.Component {
