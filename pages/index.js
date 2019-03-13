@@ -20,9 +20,20 @@ class Page extends React.Component {
     return {
       // dont use store as property name, it will confilct with initial store
       pathname, query, isServer, dvaStore: store,
+      queryString: Object.keys(query).join('')
     };
   }
-
+  async componentDidMount () {
+    const response = JSON.stringify(
+      await window
+        .fetch(`/api`)
+        .then(response => response.json().then(data => data)),
+      null,
+      2
+    )
+    debugger;
+    this.setState({ response })
+  }
   render() {
     const { index } = this.props;
     const { name, count } = index;
@@ -48,6 +59,7 @@ class Page extends React.Component {
             <a>Go to /users</a>
           </Link>
         </p>
+        <div>green</div> 
         <div>
           <Button type="primary">Button</Button>
         </div>

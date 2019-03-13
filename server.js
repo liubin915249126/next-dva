@@ -1,44 +1,65 @@
-const Koa = require('koa')
+/* eslint-disable no-console */
+const express = require('express')
 const next = require('next')
-const Router = require('koa-router')
+
+const devProxy = {
+  '/api': {
+    target: 'https://swapi.co/api/',
+    pathRewrite: { '^/api': '/' },
+    changeOrigin: true
+  }
+}
 
 const port = parseInt(process.env.PORT, 10) || 3000
-const dev = process.env.NODE_ENV !== 'production'
-const app = next({ dev })
+const env = process.env.NODE_ENV
+const dev = env !== 'production'
+const app = next({
+  dir: '.', // base directory where everything is, could move to src later
+  dev
+})
+
 const handle = app.getRequestHandler()
 
-app.prepare().then(() => {
-  const server = new Koa()
-  const router = new Router()
+let server
+app
+  .prepare()
+  .then(() => {
+    server = express()
 
-  router.get('/a', async ctx => {
-    await app.render(ctx.req, ctx.res, '/a', ctx.query)
-    ctx.respond = false
+    // Set up the proxy.
+    if (dev && devProxy) {
+      const proxyMiddleware = require('http-proxy-middleware')
+      Object.keys(devProxy).forEach(function (context) {
+        server.use(proxyMiddleware(context, devProxy[context]))
+      })
+    }
+    
+    // server.get('/404', async ctx => {
+    //     await app.render(ctx.req, ctx.res, '/404not', ctx.query)
+    //     ctx.respond = false
+    //   })
+    
+    //   server.get('*', async ctx => {
+    //     await handle(ctx.req, ctx.res)
+    //     ctx.respond = false
+    //   })
+    
+    //   server.use(async (ctx, next) => {
+    //     ctx.res.statusCode = 200
+    //     await next()
+    //   })
+
+    // Default catch-all handler to allow Next.js to handle all other routes
+    server.all('*', (req, res) => handle(req, res))
+
+    server.listen(port, err => {
+      if (err) {
+        throw err
+      }
+      console.log(`> Ready on port ${port} [${env}]`)
+    })
   })
-
-
-  router.get('/b', async ctx => {
-    await app.render(ctx.req, ctx.res, '/b', ctx.query)
-    ctx.respond = false
+  .catch(err => {
+    console.log('An error occurred, unable to start the server')
+    console.log(err)
   })
-
-  router.get('/404', async ctx => {
-    await app.render(ctx.req, ctx.res, '/404not', ctx.query)
-    ctx.respond = false
-  })
-
-  router.get('*', async ctx => {
-    await handle(ctx.req, ctx.res)
-    ctx.respond = false
-  })
-
-  server.use(async (ctx, next) => {
-    ctx.res.statusCode = 200
-    await next()
-  })
-
-  server.use(router.routes())
-  server.listen(port, () => {
-    console.log(`> Ready on http://localhost:${port}`)
-  })
-})
