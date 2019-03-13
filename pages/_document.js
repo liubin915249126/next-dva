@@ -1,5 +1,7 @@
 import Document, { Head, Main, NextScript } from 'next/document'
 import Helmet from 'react-helmet'
+// // import "antd/dist/antd.min.css";
+// import stylesheet from "~/common/common.less";
 
 export default class extends Document {
     static async getInitialProps (...args) {
@@ -44,6 +46,7 @@ export default class extends Document {
         <Head>
             { this.helmetJsx }
             { this.helmetHeadComponents }
+            {/* <style dangerouslySetInnerHTML={{ __html: stylesheet}}/> */}
         </Head>
         <body {...this.helmetBodyAttrComponents}>
         <Main />

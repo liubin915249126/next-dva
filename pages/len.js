@@ -24,7 +24,7 @@ class Page extends React.Component {
       <style jsx global>
         {`
            div{
-              color:red;
+              
            }
         `}
         </style>

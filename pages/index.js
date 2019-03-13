@@ -5,6 +5,7 @@ import WithDva from '../utils/store';
 
 import {Button} from 'antd'
 import styles from '~/less/index.less'
+// import '~/common/common.less'
 
 class Page extends React.Component {
   static async getInitialProps(props) {
@@ -41,7 +42,7 @@ class Page extends React.Component {
           </button>
         </p>
         <div className={styles.large}>30</div>
-        <div className="green">green</div>
+        <div className="green">33333</div>
         <p>
           <Link href="/users">
             <a>Go to /users</a>
