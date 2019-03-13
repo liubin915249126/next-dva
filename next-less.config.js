@@ -1,6 +1,6 @@
 var cssLoaderConfig = require('@zeit/next-css/css-loader-config')
 var path = require("path");
-const staticPath = path.resolve(__dirname,"staic") 
+const staticPath = path.resolve(__dirname,"static") 
 
 module.exports = (nextConfig = {}) => {
     return Object.assign({}, nextConfig, {

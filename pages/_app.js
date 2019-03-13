@@ -1,6 +1,6 @@
 import React from 'react'
 import App, { Container } from 'next/app'
-// import '~/common/common.less'
+import '~/common/common.less'
 
 class MyApp extends App {
   static async getInitialProps ({ Component, ctx }) {
