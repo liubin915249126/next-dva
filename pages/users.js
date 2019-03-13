@@ -12,12 +12,12 @@ export default function () {
           Back
         </a>
       </Link>
-      <Link href="/404">
+      <Link href="/len">
         <a>
           404
         </a>
       </Link>
-      <style jsx global>{styles}</style>
+      {/* <style dangerouslySetInnerHTML={{ __html: styles }} />  */}
     </div>
   );
 }

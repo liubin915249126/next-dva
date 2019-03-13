@@ -57,7 +57,7 @@ export default class extends Document {
 
 // import Document, { Head, Main, NextScript } from "next/document";
 // import Helmet from "react-helmet";
-// import antdstyle from "antd/dist/antd.min.css";
+// // import "antd/dist/antd.min.css";
 // import stylesheet from "~/less/index.less";
 
 // export default class extends Document {
@@ -108,10 +108,10 @@ export default class extends Document {
 //         <Head>
 //           <link
 //             rel='stylesheet'
-//             href='/_next/static/style.css'
+//             href='antd/dist/antd.min.css'
 //           />          
-//           <style dangerouslySetInnerHTML={{ __html: antdstyle }} />        
-//           <style dangerouslySetInnerHTML={{ __html: stylesheet}}/>
+//           {/* <style dangerouslySetInnerHTML={{ __html: antdstyle }} />         */}
+//           {/* <style dangerouslySetInnerHTML={{ __html: stylesheet}}/> */}
 //           {this.helmetJsx}
 //           {this.helmetHeadComponents}
 //         </Head>

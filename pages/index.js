@@ -3,6 +3,7 @@ import Link from 'next/link';
 import React from 'react';
 import WithDva from '../utils/store';
 
+import {Button} from 'antd'
 import styles from '~/less/index.less'
 
 class Page extends React.Component {
@@ -12,7 +13,7 @@ class Page extends React.Component {
     const {
       pathname, query, isServer, store,
     } = props;
-    console.log('get init props',pathname, query, isServer, store,);
+    // console.log('get init props',pathname, query, isServer, store,);
     // dispatch effects to fetch data here
     await props.store.dispatch({ type: 'index/init' });
     return {
@@ -40,11 +41,15 @@ class Page extends React.Component {
           </button>
         </p>
         <div className={styles.large}>30</div>
+        <div className="green">green</div>
         <p>
           <Link href="/users">
             <a>Go to /users</a>
           </Link>
         </p>
+        <div>
+          <Button type="primary">Button</Button>
+        </div>
       </div>
     );
   }

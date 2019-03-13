@@ -21,6 +21,13 @@ class Page extends React.Component {
     const { name, count } = index;
     return <div>
       {name}, {count}
+      <style jsx global>
+        {`
+           div{
+              color:red;
+           }
+        `}
+        </style>
     </div>
   }
 }

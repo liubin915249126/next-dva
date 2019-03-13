@@ -12,3 +12,6 @@ npm install
 ```
 npm start
 ```
+
+#### 
+yarn add @zeit/next-css babel-plugin-import
