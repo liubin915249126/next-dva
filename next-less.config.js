@@ -36,15 +36,16 @@ module.exports = (nextConfig = {}) => {
 
             config.module.rules.push({
                 test: /\.less$/,
-                // exclude: [/node_modules/,staticPath+'/common'],
-                exclude: [path.resolve(__dirname,'node_modules'),staticPath+'/common'],
+                exclude: /node_modules/,
+                // exclude: [path.resolve(__dirname,'node_modules'),staticPath+'/common'],
                 use: options.defaultLoaders.less
             })
 
             // disable antd css module
             config.module.rules.push({
                 test: /\.less$/,
-                include: [path.resolve(__dirname,'node_modules'),staticPath+'/common'],
+                include: /node_modules/,
+                // include: [path.resolve(__dirname,'node_modules'),staticPath+'/common'],
                 use: cssLoaderConfig(config, {
                     extensions: ['less'],
                     cssModules: false,
