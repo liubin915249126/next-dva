@@ -70,6 +70,16 @@ module.exports = (nextConfig = {}) => {
             }
 
             return config
+        },
+        webpackDevMiddleware: config => {
+            // Perform customizations to webpack dev middleware config
+            // Important: return the modified config
+            console.log(JSON.stringify(config))
+            return config
+        },
+        generateBuildId: async () => {
+            // For example get the latest git commit hash here
+            return 'my-build-id'
         }
     })
 }
