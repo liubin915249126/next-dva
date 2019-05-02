@@ -1,5 +1,6 @@
 import React from 'react';
 import WithDva from '../utils/store';
+import Home from '../components/home/index'
 
 class Page extends React.Component {
   static async getInitialProps(props) {
@@ -17,9 +18,10 @@ class Page extends React.Component {
     };
   }
   render(){
+  
     const { index } = this.props;
     const { name, count } = index;
-    return <div>
+    return <Home>
       {name}, {count}
       <style jsx global>
         {`
@@ -28,7 +30,7 @@ class Page extends React.Component {
            }
         `}
         </style>
-    </div>
+    </Home>
   }
 }
 
