@@ -25,15 +25,10 @@ class Page extends React.Component {
   }
   async componentDidMount () {
     // await props.store.dispatch({ type: 'index/getdata' });
-    // const response = JSON.stringify(
-    //   await window
-    //     .fetch(`/api`)
-    //     .then(response => response.json().then(data => data)),
-    //   null,
-    //   2
-    // )
-    // debugger;
-    // this.setState({ response })
+    const response = await window.fetch(`/api`)
+        .then(response => response.json().then(data => data))
+    debugger;
+    this.setState({ response })
   }
   render() {
     const { index } = this.props;

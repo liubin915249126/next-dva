@@ -1,3 +1,4 @@
+import fetch from 'isomorphic-unfetch'
 const delay = timeout => new Promise(resolve => setTimeout(resolve, timeout));
 
 const model = {
@@ -24,8 +25,7 @@ const model = {
       yield put({ type: 'caculate', delta: 1 });
     },
     *getdata(action, { put }){
-      const res = yield  window
-      .fetch(`/api`)
+      const res = yield fetch(`http://localhost:3004/api`)
       .then(response => response.json().then(data => data));
       yield put({ type: 'getdata1', res });
     }
