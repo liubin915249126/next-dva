@@ -27,12 +27,12 @@ app
     server = express()
 
     // Set up the proxy.
-    // if (dev && devProxy) {
-    //   const proxyMiddleware = require('http-proxy-middleware')
-    //   Object.keys(devProxy).forEach(function (context) {
-    //     server.use(proxyMiddleware(context, devProxy[context]))
-    //   })
-    // }
+    if (devProxy) {
+      const proxyMiddleware = require('http-proxy-middleware')
+      Object.keys(devProxy).forEach(function (context) {
+        server.use(proxyMiddleware(context, devProxy[context]))
+      })
+    }
     
     // server.get('/404', async ctx => {
     //     await app.render(ctx.req, ctx.res, '/404not', ctx.query)
