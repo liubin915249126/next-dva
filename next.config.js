@@ -10,6 +10,10 @@ if (typeof require !== 'undefined') {
 module.exports = withLessExcludeAntd(
   // withCss(
     {
+    target: 'serverless',
+    env:{
+      special:'value'
+    },
     cssModules: true,
     cssLoaderOptions: {
       importLoaders: 1,
