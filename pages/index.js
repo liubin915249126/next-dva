@@ -24,14 +24,14 @@ class Page extends React.Component {
     // dispatch effects to fetch data here
     // await props.store.dispatch({ type: 'index/init' });
     
-    const response1 = await fetch(`http://localhost:3000/index`,)
-    .then(response => response.json().then(data => data))
+    // const response1 = await fetch(`http://localhost:3000/index`,)
+    // .then(response => response.json().then(data => data))
     
     return {
       // dont use store as property name, it will confilct with initial store
       pathname, query, isServer, dvaStore: store,
       queryString: Object.keys(query).join(''),
-      response1
+      response1:{}
     };
   }
   async componentDidMount () {
@@ -82,7 +82,7 @@ class Page extends React.Component {
           {response.films}
         </div>
         <div>
-          {array100.map(item=>{return <Button type="primary">Button</Button>})}
+          {/* {array100.map(item=>{return <Button type="primary">Button</Button>})} */}
         </div>
       </div>
     );
