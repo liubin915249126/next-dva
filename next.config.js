@@ -1,18 +1,32 @@
 const withLess = require("@zeit/next-less");
 const withCss = require("@zeit/next-css");
-const withLessExcludeAntd = require("./next-less.config.js")
+const withLessExcludeAntd = require("./next-less.config.js");
 var path = require("path");
 
-if (typeof require !== 'undefined') {
-  require.extensions['.less'] = (file) => {}
+if (typeof require !== "undefined") {
+  require.extensions[".less"] = (file) => {};
 }
 
 module.exports = withLessExcludeAntd(
   // withCss(
-    {
-    target: 'serverless',
-    env:{
-      special:'value'
+  {
+    trailingSlash: true,
+    exportPathMap: async function (
+      defaultPathMap,
+      { dev, dir, outDir, distDir, buildId }
+    ) {
+      // console.log('defaultPathMap',defaultPathMap)
+      // const custompathMap = {}
+      // Object.keys(defaultPathMap).forEach(key =>{
+      //   custompathMap[`${key}.html`] = {...defaultPathMap[key], page: `${defaultPathMap[key].page}`}
+      // })
+      return {
+        ...defaultPathMap,
+      };
+    },
+    target: "serverless",
+    env: {
+      special: "value",
     },
     cssModules: true,
     cssLoaderOptions: {
@@ -22,7 +36,7 @@ module.exports = withLessExcludeAntd(
     lessLoaderOptions: {
       javascriptEnabled: true,
       // modifyVars: modifyVars
-    }
+    },
     // distDir: "lwbBlogBuild",
   }
   // )
