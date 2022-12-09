@@ -20,7 +20,7 @@
     "babel-plugin-import": "^1.11.0",
     "babel-plugin-transform-class-properties": "^6.24.1",
     "dva-no-router": "^1.0.3",
-    "express": "^4.16.4",
+    "express": "^4.17.3",
     "http-proxy-middleware": "^0.19.1",
     "isomorphic-unfetch": "^3.0.0",
     "koa": "^2.7.0",
